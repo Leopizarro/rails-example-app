@@ -1,0 +1,18 @@
+<% unless comment.archived? %>
+    <div>
+        <p>Autor:</p>
+        <%= comment.author %>
+    </div>
+
+    <div>
+        <p>Comentario:</p>
+        <%= comment.body %>
+    </div>
+    <div>
+        <%= link_to "Eliminar Comentario", [comment.post, comment], data: {
+            turbo_method: :delete,
+            turbo_confirm: "Estás seguro?"
+        }%>
+    </div>
+    <hr>
+<% end %>

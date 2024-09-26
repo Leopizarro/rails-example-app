@@ -1,0 +1,13 @@
+<h1>Actualmente existen <%= Post.public_count %> posts publicados !</h1>
+
+<ul>
+    <% @posts.each do |post| %>
+        <% unless post.archived? %>
+            <li>
+                <%= link_to post.title, post %>
+            </li>
+        <% end %>
+    <% end %>
+</ul>
+
+<%= link_to "Crear nuevo post", new_post_path %>

@@ -1,0 +1,19 @@
+<h1> <%= @post.title %> </h1>
+
+<h2> <%= @post.body %> </h2>
+
+<ul>
+    <li> <%= link_to "Editar post", edit_post_path(@post) %> </li>
+    <li> <%= link_to "Eliminar", post_path(@post), data: {
+    turbo_method: :delete,
+    turbo_confirm: "Estás seguro?"
+} %> </li>
+</ul>
+
+<h2> Deja un comentario: </h2>
+
+<%= render "comments/form", post: @post %>
+
+<h2> Comentarios realizados: </h2>
+<hr>
+<%= render @post.comments.select(&:persisted?) %>
